@@ -50,6 +50,7 @@ git clone --recursive -b v3.4.0 https://github.com/google/protobuf.git
 ~~~
     
 2. 利用CMake生成基于Visual Studio 2015的
+
 ~~~
 cd build
 cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_TESTS=OFF ../demo/protobuf/cmake
