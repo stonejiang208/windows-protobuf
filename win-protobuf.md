@@ -2,7 +2,13 @@
 
 ## 摘要
 
-Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接口定义语言(IDL),作为一种数据交换格式,适用于跨平台数据通讯时的消息编码和解码。本文演示了在Windows下如何在C++语言环境下使用Protobuf。
+Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接口定义语言(IDL),作为一种数据交换格式,适用于跨平台数据通讯时的消息编码和解码。本文演示了在Windows下如何在C++语言环境下使用Protobuf。关键步骤为：
+ 1. 定义数据交换格式(proto文件)
+ 2. 利用protoc实用工具把proto文件编译成C++头文件和库文件
+ 3. 利用mwc构建工具把生成的头文件和库文件编译成动态链接库
+ 4. 在项目工程中引用这个库进行消息编码和/或解码
+
+在使用前，需要先构建protoc实用工具和protobuf开发库。
 
 ## 演示环境
 
@@ -13,11 +19,23 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
     * Active Perl 5.22.1
     * git 2.9.0 windows.1
     * sed 4.2.2 (in git)
+    * CMake 3.9.1
 
 ## 先导环境
   
+  * 安装Active Perl
+    
+    mwc依赖Perl
+  * 安装 git 
+    
+    在编译库时，需要利用git环境下的sed工具，修改生成的头文件.
+  * 安装 CMake 
+  
+   构建protoc工具及开发库时需要用到CMake工具。
   * 在Windows下正确编译ACE (x64)
   
+## 从源代码中构建protoc及开发库
+
 ## 主要步骤
 
 ## 示例代码
