@@ -1,0 +1,35 @@
+// -*- MPC -*- 
+//===========================================================================
+//* Time-stamp: <2017-07-13 12:17:49 by admin> 
+// @file Lib_GP_Protoc.mpc
+// * $Id: Lib_GP_Protoc.mpc 2017-07-06 11:27:23 admin Exp $
+// *
+// * @author:Stone Jiang <jiangtao@tao-studio.net>
+//===========================================================================
+
+project(libGP_Protoc):acelib{
+  sharedname  = GP_Protoc
+  dynamicflags += GP_PROTOC_BUILD_DLL
+  macros += PROTOBUF_USE_DLLS
+	includes += /usr/local/include
+	includes += /usr/local/include/google
+	libpaths += /usr/local/lib
+	libout    = ../lib
+
+	specific (prop:microsoft) {
+		dllout  = ../lib
+	}
+	specific(prop:windows){
+		libs += libprotobuf
+		}else {
+		lit_libs += protobuf
+	}
+	
+	Source_Files {
+		*.cc
+	}
+  Documentation_Files {
+		*.proto
+	}
+}
+

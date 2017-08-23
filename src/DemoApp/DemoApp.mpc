@@ -1,0 +1,15 @@
+project(DemoApp):aceexe{
+  exename = DemoApp
+  	includes += /usr/local/include
+	includes += /usr/local/include/google
+	libpaths += /usr/local/lib
+  libpaths += ../lib
+  includes += ../
+  exeout   = ../lib
+  libs += GP_Protoc
+  	specific(prop:windows){
+		libs += libprotobuf
+		}else {
+		lit_libs += protobuf
+	}
+}
