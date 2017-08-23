@@ -1,5 +1,8 @@
 # 在Windows下使用Protobuf的示例
 
+Stone
+
+
 ## 摘要
 
 Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接口定义语言(IDL),作为一种数据交换格式,适用于跨平台数据通讯时的消息编码和解码。本文演示了在Windows下如何在C++语言环境下使用Protobuf。关键步骤为：
@@ -42,19 +45,19 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
     
 1. 从github上获得protobuf的源代码
 
-    ~~~
+    ```
     mkdir demo
     mkdir build
     cd demo
     git clone --recursive -b v3.4.0 https://github.com/google/protobuf.git
-    ~~~
+    ```
     
 2. 利用CMake生成基于Visual Studio 2015的解决方案工程文件
 
-    ~~~
+    ```
     cd build
     cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_SHARED_LIBS=ON ../demo/protobuf/cmake
-    ~~~
+    ```
     
 3. 用Visual Studio打开上一步生成的protobuf.sln文件，编译生成。执行INSTALL工程，可以将编译的结果输出到/usr/local目录下
 
@@ -74,7 +77,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
 ## 使用protobuf的主要步骤
 
 1. 定义数据交换格式文件 
-   ~~~
+   ```
    syntax="proto3";
    package GP.Msg;
 
@@ -84,32 +87,32 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
         uint32 sn = 2;    //消息序号
         string token = 3; //消息令牌
     }
-   ~~~
+   ```
 2. 生成动态链接库
     
     利用ACE提供的工具generate_export_file.pl生成导出文件，这个文件后面要用到。
     
-    ~~~
+    ```
      cd libDemo
      generate_export_file.pl GP_PROTOC > GP_Protoc_Export.h
-    ~~~
+    ```
     
     
     利用protoc实用工具生成c++头文件和源文件,参见libDemo/g.sh。这一步由于要使用sed，所以需要进入到git bash环境中来运行。
     
-    ~~~
+    ```
      protoc  --cpp_out=dllexport_decl=GP_PROTOC_Export:. Demo.proto
      sed -i '21 c #include "GP_Protoc_Export.h"' Demo.pb.h
-    ~~~
+    ```
     
     protoc有dllexport_decl指令用于方便生成的代码能编译成动态库，但是我还不知道用什么指令来在生成的*.pb.h中增加包含的头文件，所以只好用sed来强行修改。如果您知道有更好的办法，请告诉我。
     
     接下来利用mwc工具生成构建文件。mwc工具类似于CMake，本文件暂不多作讨论，如果有需要更详细的介绍，请给我留言。这里直接给出操作指令。
     
-    ~~~
+    ```
      rem 当前路径 libDemo
      mwc.pl -type vc14
-    ~~~
+    ```
     
     以上指令能生成 libDemo.sln文件,用Visual Studio编译可得libDemo.dll, libDemo.lib
     
@@ -123,7 +126,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
     
     以上指令能生成 DemoApp.sln文件,用Visual Studio编译可得DemoApp.exe,运行结果如下：
     
-    ~~~~
+    ```
         C:\workspace\win-protobuf\windows-protobuf\src\lib>DemoApp.exe
         cmd: 1
         sn: 123
@@ -136,7 +139,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
         sn =123
 
         token =abcde
-     ~~~~
+     ```
     
 ## 示例代码
   
