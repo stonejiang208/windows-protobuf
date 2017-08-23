@@ -87,7 +87,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
    ~~~
 2. 生成动态链接库
     
-    - 利用ACE提供的工具generate_export_file.pl生成导出文件，这个文件后面要用到。
+    利用ACE提供的工具generate_export_file.pl生成导出文件，这个文件后面要用到。
     
     ~~~
      cd libDemo
