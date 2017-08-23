@@ -49,18 +49,37 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
     git clone --recursive -b v3.4.0 https://github.com/google/protobuf.git
     ~~~
     
-2. 利用CMake生成基于Visual Studio 2015的
+2. 利用CMake生成基于Visual Studio 2015的解决方案工程文件
 
     ~~~
     cd build
-    cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_TESTS=OFF ../demo/protobuf/cmake
+    cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_SHARED_LIBS=ON ../demo/protobuf/cmake
     ~~~
     
-### 说明 
-    1. 
+3. 用Visual Studio打开上一步生成的protobuf.sln文件，编译生成。执行INSTALL工程，可以将编译的结果输出到/usr/local目录下
 
-## 主要步骤
+
+
+
+### 说明
+
+1. 设置生成的路径为当前盘符的/usr/local，这是我的个人喜好，目的是跟linux下的路径一致，因为绝大数时候，还是工作在linux环境下的。
+
+2. 生成动态链接库 -Dprotobuf_BUILD_SHARED_LIBS=ON 
+
+3. 不编译测试代码 -Dprotobuf_BUILD_TESTS=OFF
+
+
+
+## 使用protobuf的主要步骤
+
+1. 定义数据交换格式文件 
+
+2. 生成动态链接库
+
+3. 在自己的工程中使用动态库进行编码或解码
+
 
 ## 示例代码
 
-
+ 
