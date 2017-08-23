@@ -53,7 +53,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
 
     ~~~
     cd build
-        cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_TESTS=OFF ../demo/protobuf/cmake
+    cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_TESTS=OFF ../demo/protobuf/cmake
     ~~~
     
 ### 说明 
