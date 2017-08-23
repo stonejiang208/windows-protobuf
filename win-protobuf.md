@@ -74,7 +74,17 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
 ## 使用protobuf的主要步骤
 
 1. 定义数据交换格式文件 
+   ~~~
+   syntax="proto3";
+   package GP.Msg;
 
+    message Header
+    {
+        uint32 cmd = 1;   //消息号
+        uint32 sn = 2;    //消息序号
+        string token = 3; //消息令牌
+    }
+   ~~~
 2. 生成动态链接库
 
 3. 在自己的工程中使用动态库进行编码或解码
