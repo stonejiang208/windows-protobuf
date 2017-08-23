@@ -1,0 +1,9 @@
+syntax="proto3";
+package GP.Msg;
+
+message Header
+{
+  uint32 cmd = 1;   //消息号
+  uint32 sn = 2;    //消息序号
+  string token = 3; //消息令牌
+}
