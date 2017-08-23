@@ -39,7 +39,7 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
 ## 从源代码中构建protoc及开发库
 
 ### 步骤
-    # 从github上获得protobuf的源代码
+    * 从github上获得protobuf的源代码
 
 ~~~
 mkdir demo
@@ -48,7 +48,7 @@ cd demo
 git clone --recursive -b v3.4.0 https://github.com/google/protobuf.git
 ~~~
     
-    # 利用CMake生成基于Visual Studio 2015的
+    * 利用CMake生成基于Visual Studio 2015的
 ~~~
 cd build
 cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=/usr/local  -Dprotobuf_BUILD_TESTS=OFF -Dprotobuf_BUILD_TESTS=OFF ../demo/protobuf/cmake
