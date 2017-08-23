@@ -95,6 +95,12 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
     ~~~
     
     
+    利用protoc实用工具生成c++头文件和源文件,参见libDemo/g.sh。这一步由于要使用sed，所以需要进入到git bash环境中来运行。
+    
+    ~~~
+     protoc  --cpp_out=dllexport_decl=GP_PROTOC_Export:. Demo.proto
+     sed -i '21 c #include "GP_Protoc_Export.h"' Demo.pb.h
+    ~~~
 
 3. 在自己的工程中使用动态库进行编码或解码
 
