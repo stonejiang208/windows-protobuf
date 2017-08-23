@@ -101,10 +101,45 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
      protoc  --cpp_out=dllexport_decl=GP_PROTOC_Export:. Demo.proto
      sed -i '21 c #include "GP_Protoc_Export.h"' Demo.pb.h
     ~~~
+    
+    protoc有dllexport_decl指令用于方便生成的代码能编译成动态库，但是我还不知道用什么指令来在生成的*.pb.h中增加包含的头文件，所以只好用sed来强行修改。如果您知道有更好的办法，请告诉我。
+    
+    接下来利用mwc工具生成构建文件。mwc工具类似于CMake，本文件暂不多作讨论，如果有需要更详细的介绍，请给我留言。这里直接给出操作指令。
+    
+    ~~~
+     rem 当前路径 libDemo
+     mwc.pl -type vc14
+    ~~~
+    
+    以上指令能生成 libDemo.sln文件,用Visual Studio编译可得libDemo.dll, libDemo.lib
+    
 
 3. 在自己的工程中使用动态库进行编码或解码
 
+    ~~~
+     rem 当前路径 DemoApp
+     mwc.pl -type vc14
+    ~~~
+    
+    以上指令能生成 DemoApp.sln文件,用Visual Studio编译可得DemoApp.exe,运行结果如下：
+    
+    ~~~~
+        C:\workspace\win-protobuf\windows-protobuf\src\lib>DemoApp.exe
+        cmd: 1
+        sn: 123
+        token: "abcde"
 
+        {abcde
+
+        cmd = 1
+
+        sn =123
+
+        token =abcde
+     ~~~~
+    
 ## 示例代码
-
+  
+  https://github.com/stonejiang208/windows-protobuf
+  
  
