@@ -24,10 +24,14 @@ Protobuf全称为Google ProtoBuf,它是由Google开源的项目，类似于接�
 ## 先导环境
   
   * 安装Active Perl
+  
     mwc依赖Perl
+    
   * 安装 git 
+  
     在编译库时，需要利用git环境下的sed工具，修改生成的头文件.
   * 安装 CMake 
+  
     构建protoc工具及开发库时需要用到CMake工具。
   * 在Windows下正确编译ACE (x64)
   
